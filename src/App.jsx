@@ -10,25 +10,35 @@ function App() {
       <header>
         <h1>Task Manager</h1>
       </header>
+
       <section>
         <h2>Current Tasks ({currentTasks.length})</h2>
+
         <ul>
-          {currentTasks.map((curTask, index) => (
-            <li key={index}>
+          {currentTasks.map((curTask) => (
+            <li key={curTask.id}>
               <h3>{curTask.title}</h3>
+              <span className={`tag state-${curTask.state.replace('_', '-')}`}>
+                {curTask.state}
+              </span>
               <p>Priority: {curTask.priority}</p>
               <p>Est. time: {curTask.estimatedTime}</p>
             </li>
           ))}
         </ul>
       </section>
+
       <hr />
+
       <section>
         <h2>Completed Tasks ({completedTasks.length})</h2>
         <ul>
-          {completedTasks.map((curTask, index) => (
-            <li key={index}>
+          {completedTasks.map((curTask) => (
+            <li key={curTask.id}>
               <h3>{curTask.title}</h3>
+              <span className={`tag state-${curTask.state}`}>
+                {curTask.state}
+              </span>
               <p>Priority: {curTask.priority}</p>
               <p>Est. time: {curTask.estimatedTime}</p>
             </li>
@@ -37,6 +47,6 @@ function App() {
       </section>
     </>
   )
-}
+};
 
-export default App
+export default App;
